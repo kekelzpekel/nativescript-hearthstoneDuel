@@ -1,0 +1,15 @@
+
+.idea
+
+/platforms/
+/hooks/
+
+**/*.js
+**/*.map
+
+npm-debug.log
+
+node_modules/
+typings/
+plugins/
+
