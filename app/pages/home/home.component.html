@@ -1,0 +1,11 @@
+<ActionBar title="Hearthstone class picker">
+    <ActionItem (tap)="onInfo()"
+                ios.systemIcon="9" ios.position="right"
+                android.systemIcon="ic_menu_info"
+                android.position="actionBar"></ActionItem>
+</ActionBar>
+<StackLayout>
+    <Image [src]="'res://'+selectedHero.src"></Image>
+    <Label [text]="selectedHero.name"></Label>
+    <Button text="Pick a class" (tap)="onTap()"></Button>
+</StackLayout>
