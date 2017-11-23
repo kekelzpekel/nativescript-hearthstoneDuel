@@ -1,0 +1,5 @@
+<StackLayout (tap)="select(selectedHero)">
+    <Image [src]="'res://'+selectedHero.src"></Image>
+    <Label [text]="selectedHero.name"></Label>
+    <Button text="Pick a class" (tap)="onTap()"></Button>
+</StackLayout>

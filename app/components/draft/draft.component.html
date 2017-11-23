@@ -1,0 +1,9 @@
+<StackLayout>
+    <Button text="Begin draft" (tap)="draft()"></Button>
+    <GridLayout columns="auto, auto, auto" rows="*">
+        <StackLayout *ngFor="let card of cards; let i = index" [col]="i">
+            <Image [src]="card.image"></Image>
+            <Label [text]="card.name"></Label>
+        </StackLayout>
+    </GridLayout>
+</StackLayout>
