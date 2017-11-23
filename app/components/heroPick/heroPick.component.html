@@ -1,5 +1,8 @@
-<StackLayout (tap)="select(selectedHero)">
-    <Image [src]="'res://'+selectedHero.src"></Image>
-    <Label [text]="selectedHero.name"></Label>
-    <Button text="Pick a class" (tap)="onTap()"></Button>
+<StackLayout>
+    <GridLayout columns="auto, auto, auto" rows="*">
+        <StackLayout *ngFor="let hero of heroDraft; let i = index" [col]="i">
+            <Image [src]="'res://'+hero.src" (tap)="selectHero(hero)"></Image>
+            <Label [text]="hero.name"></Label>
+        </StackLayout>
+    </GridLayout>
 </StackLayout>

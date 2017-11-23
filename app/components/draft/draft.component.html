@@ -1,9 +1,14 @@
-<StackLayout>
+<StackLayout *ngIf="!code">
     <Button text="Begin draft" (tap)="draft()"></Button>
+    <Label [text]="draftNumber"></Label>
     <GridLayout columns="auto, auto, auto" rows="*">
         <StackLayout *ngFor="let card of cards; let i = index" [col]="i">
-            <Image [src]="card.image"></Image>
+            <Image [src]="card.image" (tap)="draft(card)"></Image>
             <Label [text]="card.name"></Label>
         </StackLayout>
     </GridLayout>
+</StackLayout>
+<StackLayout *ngIf="code">
+    <TextField [text]="code"></TextField>
+    <Button text="new Hero" (tap)="new()"></Button>
 </StackLayout>
