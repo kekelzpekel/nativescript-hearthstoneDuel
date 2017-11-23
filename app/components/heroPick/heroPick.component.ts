@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Hero} from "../../models/hero";
 import {HeroList} from "../../services/heroList";
 import {Api} from "../../services/api";
@@ -10,22 +10,23 @@ import {Router} from "@angular/router";
     styleUrls: ['./heroPick.component.css'],
 })
 
-export class HeroPickComponent {
-    selectedHero: Hero;
+export class HeroPickComponent implements OnInit {
     heroList: Array<Hero> = [];
+    heroDraft: Hero[] = [];
 
     constructor(private hList: HeroList, private api: Api, private router: Router) {
-        this.selectedHero = new Hero();
         this.heroList = this.hList.getHeroList();
     }
 
-    onTap() {
-        let randomNumber = Math.floor(Math.random() * 8) + 1;
-        this.selectedHero = this.heroList.find(hero => hero.id === randomNumber);
+    ngOnInit() {
+        for (let i = 0; i < 3; i++) {
+            let randomNumber = Math.floor(Math.random() * 8) + 1;
+            this.heroDraft.push(this.heroList.find(hero => hero.id === randomNumber));
+        }
     }
 
-    select(hero: Hero) {
-        this.api.setHero(hero.name.toUpperCase());
+    selectHero(hero: Hero) {
+        this.api.setHero(hero);
         this.router.navigate(['draft']);
     }
 }
